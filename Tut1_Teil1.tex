@@ -1,0 +1,532 @@
+\documentclass{beamer}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usetheme{Warsaw}
+\usecolortheme{default}
+
+% Define user colors using the RGB model
+\definecolor{hellblau}{rgb}{0.8,0.0,0.8}
+\definecolor{dunkelblau}{rgb}{0.0,0.0,0.95}
+
+\date{31.10.2014}
+\author{ Richard Feistenauer }
+
+\title {GBI Tutorium NR: 31}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}
+	\frametitle {Inhaltsverzeichnis}
+	\tableofcontents
+\end{frame}
+
+\section{Organisatorisches}
+
+\begin{frame}
+	\frametitle {Organisatorisches}
+	\begin{block}{Tutorium ist}
+        		\begin{itemize}
+			\item kurze Wiederholung der Vorlesung
+			\item Anlaufstelle für Fragen
+			\item Übungsbereich für aktuellem Vorlesungsstoff
+			\item Ausgabestelle der Übungsblätter
+			\item Freiwillig
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{Tutorium ist nicht}
+        		\begin{itemize}
+			\item Vorlesungs ersatz
+			\item Lösungsstelle für kommendes Übungsblatt
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle {Organisatorisches}
+	\begin{block}{Übungsblatt}
+        		\begin{itemize}
+			\item Übungsblatt einzeln handschriftlich bearbeiten
+			\item Abgabe Freitag 12:30 Uhr im Briefkasten im Keller
+			\item Offensichtlich abgeschrieben $\Rightarrow$ 0 Punkte
+			\item Ab Hälfte der Punkte bestanden (Voraussichtlich 120)
+			\item Übungsschein zum Bestehen des Moduls notwendig
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle {Organisatorisches}
+	\begin{block}{Prüfung}
+        		\begin{itemize}
+			\item 4. März 2015 (14 Uhr)
+			\item Nachprüfung im September. (Achtung Mathe Klausuren sind da 					auch!)
+			\item Prüfung Notwendig für Orientierungsprüfung.
+		\end{itemize}
+	\end{block}
+	
+	\begin{block}{Kontakt / Information}
+		\begin{itemize}
+			\item gbi.tutorium@googlemail.com
+			\item http://gbi.ira.uka.de/
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\section{Alphabete}
+\begin{frame}
+	\frametitle{Alphabete}
+	\begin{block}{Definition}
+		Ein Alphabet ist eine \emph{endliche, nichtleere} Menge von Zeichen.
+	\end{block}
+	\begin{exampleblock}{Aufgaben}
+		\begin{itemize}
+			\item $\mathbb N$\(_{+}\) ?
+			\item \(M=\{\phi,3,\psi,a\}\) ?
+		\end{itemize}
+	\end{exampleblock}
+	\pause
+	\begin{alertblock}{Notation}
+		\begin{itemize}
+			\item $\mathbb N$\(_{+}=\{1,2,3,\dots\}\) (positive ganze Zahlen)
+			\item $\mathbb N$\(_{0}=\{0,1,2,3,\dots\}\) (nichtnegative ganze 					Zahlen)
+		\end{itemize}
+	\end{alertblock}
+\end{frame}
+
+\section{Aussagenlogik}
+\begin{frame}
+	\frametitle {Aussagenlogik}
+	\begin{block}{}
+		\begin{itemize}
+			\item Eine Aussage ist ein Satz, der (objektiv) entweder wahr oder 					falsch sein kann
+			\item Aussagen sind äquivalent (\(\Leftrightarrow\)), wenn sie die 					gleichen Wahrheitswerte besitzen
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle {Aussagenlogik}
+	\begin{block}{Logisches UND und ODER}
+		\begin{center}
+			\begin{tabular}{|c|c||c| }
+				\hline
+				A & B & A $\land$ B \\
+				\hline
+				wahr & wahr & \textbf{wahr}	\\
+				\hline
+				wahr & falsch & falsch \\
+				\hline
+				falsch & wahr & falsch \\
+				\hline
+				falsch & falsch & falsch \\
+				\hline
+			\end{tabular}
+			\begin{tabular}{|c|c||c| }
+				\hline
+				A & B & A $\lor$ B \\
+				\hline
+				wahr & wahr & wahr \\
+				\hline
+				wahr & falsch & wahr \\
+				\hline
+				falsch & wahr & wahr \\
+				\hline
+				falsch & falsch & \textbf{falsch}	\\
+				\hline
+			\end{tabular}
+		\end{center}
+	\end{block}
+	\pause	
+	\begin{exampleblock}{Aufgabe}
+		Stelle eine Wahrheitstabelle für den Ausdruck \((A\wedge B)\vee A\) auf.
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+	\frametitle {Implikation}
+	\begin{center}
+		\begin{tabular}{|c|c||c| }
+			\hline
+			A & B & $\Rightarrow$ \\
+			\hline
+			wahr & wahr & wahr \\
+			\hline
+			wahr & falsch & \textbf{falsch}	\\
+			\hline
+			falsch & wahr & wahr \\
+			\hline
+			falsch & falsch & wahr \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\begin{alertblock}{Wichtig!}
+		\begin{itemize}
+			\item A $\Rightarrow$ B ist äquivalent zu \(\neg A\vee B\)
+			\item D.h. man muss nur etwas tun, wenn A wahr ist. (Beweise)
+		\end{itemize}
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}
+	\frametitle {Implikation}
+	\begin{center}
+		\begin{tabular}{|c|c||c| }
+			\hline
+			A & B & $\Rightarrow$ \\
+			\hline
+			wahr & wahr & wahr \\
+			\hline
+			wahr & falsch & \textbf{falsch}	\\
+			\hline
+			falsch & wahr & wahr \\
+			\hline
+			falsch & falsch & wahr \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\begin{exampleblock}{Aufgabe}
+		Finde für F einen äquivalenten Ausdruck, in dem A und B jeweils höchstens 			einmal vorkommen.
+		\begin{displaymath}
+			F = (A\Rightarrow B) \Rightarrow ((B\Rightarrow A) \Rightarrow B)
+		\end{displaymath}
+	\end{exampleblock}
+\end{frame}
+
+\section{Relationen}
+\subsection{Kartesisches Produkt}
+\begin{frame}
+	\frametitle {Kartesisches Produkt}
+	\begin{block}{Definition}
+		\(A\times B = \{(a,b)|a\in A \wedge b\in B\}\)\\
+		Die Menge aller geordneten Paare (a,b) mit a aus A und b aus B
+	\end{block}
+	\pause
+	\begin{exampleblock}{Aufgaben}
+		\begin{itemize}
+			\item Berechne \(\{a,b\} \times \{1,2,3\}\).\\
+			\uncover<3->{ \(\{(a,1),(a,2),(a,3),(b,1),(b,2),(b,3)\}\)}
+			\item Wieviele Elemente hat \(\{\alpha,\beta,\gamma,\delta\} \times 				\{42,43,44\}\)?\\
+			\uncover<4->{12}
+			\item Was ist \(\emptyset \times M\)?\\
+			\uncover<5->{\(\emptyset\)}
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\subsection{Relationen}
+\begin{frame}
+	\frametitle{Relationen}
+	\begin{block}{Definition}
+		\begin{itemize}
+			\item Eine Teilmenge \(R\subseteq A \times B\) heißt (binäre) Relation 			von A in B.
+			\item Wenn A = B, spricht man von einer Relation auf der Menge A.
+			\item Statt (a,b) $\in$ R kann man auch a R b schreiben bzw. statt \((a,b) \in R_{\geq}\) auch \(a \geq b\).
+		\end{itemize}
+	\end{block}
+	\pause
+	\begin{exampleblock}{Aufgabe}
+		Wie ist die Kleiner-Gleich-Relation \(R_{\leq}\) auf der Menge M = 					\{1,2,3\} formell definiert?\\
+		\pause
+		\uncover<2->{\(R_{\leq}=\{(1,1),(1,2),(1,3),(2,2),(2,3),(3,3)\}\)}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+	\frametitle {Eigenschaften von Relationen}
+	\begin{tabular} {l l}
+		\textbf {linkstotal} & eine Relation R $ \subseteq $ A x B ist linkstotal 	wenn gilt: \\
+& $ \forall $ a $ \in $ A, $ \exists $ b $ \in $ B : ( a , b ) $ \in $ R \\
+\\
+		\textbf {rechtseindeutig} &eine Relation R $ \subseteq $ A x B ist rechtseindeutig wenn gilt: \\
+& $ \forall $ a $ \in $ A, $ \forall $ b , c $ \in $ B : \\
+& ( a , b ) $ \in $ R $ \land $ ( a , c ) $ \in $ R $\Rightarrow$ b = c \\
+\\
+		\textbf {rechtstotal } & eine Relation R $ \subseteq $ A x B ist rechtstotal wenn gilt: \\
+& $ \forall $ b $ \in $ B, $ \exists $ a $ \in $ A : ( a , b ) $ \in $ R \\
+\\
+		\textbf {linkseindeutig} &eine Relation R $ \subseteq $ A x B ist linkseindeutig wenn gilt: \\
+& $ \forall $ a , c $ \in $ A, $ \forall $ b $ \in $ B : \\
+& ( a , b ) $ \in $ R $ \land $ ( c , b ) $ \in $ R $\Rightarrow$ a = c \\
+	\end{tabular}
+\end{frame}
+		
+\begin{frame}
+	\frametitle {Eigenschaften von Relationen}
+	\begin{tabular} {l l}
+		\textbf {linkstotal} & Jedes Element aus A hat mindestens einen Partner\\ &in B \\
+\\
+		\textbf {rechtseindeutig} & Jedes Element aus A hat höchstens einen Partner\\ & in B \\ \\
+\\
+		\textbf {rechtstotal } & Jedes Element aus B hat mindestens einen Partner\\ & in A
+\\
+\\
+		\textbf {linkseindeutig} & Jedes Element aus B hat höchstens einen Partner\\& in A
+\\
+	\end{tabular}
+\end{frame}	
+
+\begin{frame}
+	\frametitle{Eigenschaften von Relationen}
+	\begin{exampleblock}{Aufgaben}
+		Sind folgende Relationen links-/rechtstotal, links-/rechtseindeutig?
+		\begin{itemize}
+			\item Die Gleichheitsrelation \(R_{=}\) auf $\mathbb R$
+			\item Die Kleinerrelation \(R_{<}\) auf $\mathbb R$
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\subsection{Funktionen/Abbildungen}
+\begin{frame}
+	\frametitle{Funktionen/Abbildungen}
+	\begin{block}{Definition}
+		Eine Relation, die linkstotal und rechtseindeutig ist, nennt man Funktion 			oder Abbildung. \\
+		Sei f: A $\rightarrow$ B eine Funktion. Dann ist:
+		\begin{itemize}
+			\item A der Definitionsbereich
+			\item B der Zielbereich
+			\item f(A) der Bildbereich von f
+		\end{itemize}
+	\end{block}
+	\begin{exampleblock}{Aufgabe}
+		Was bedeutet es wenn der Bildbereich gleich dem Zielbereich ist?
+	\end{exampleblock}
+	\end {frame}
+	\begin {frame}
+	\begin{block}{Eigenschaften von Funktionen/Abbildungen}
+		\begin{itemize}
+			\item linkseindeutig $\rightarrow$ injektiv
+			\item rechtstotal $\rightarrow$ surjektiv
+			\item injektiv + surjektiv = bijektiv
+		\end{itemize}
+	\end{block}
+	\begin{exampleblock}{Aufgaben}
+		Sind folgende Funktionen injektiv, surjektiv oder bijektiv?
+		\begin{itemize}
+			\item \(f:\mathbb R \rightarrow \mathbb R, x \mapsto x\)
+			\item \(g:\mathbb N_{0} \rightarrow \mathbb N_{0}, x \mapsto 2x\)
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\section{Prädikatenlogik}
+\begin{frame}
+	\frametitle{Prädikatenlogik}
+	Mit der Prädikatenlogik können wir viele Sachverhalte kurz und präzise 				darstellen.
+	\pause
+	\begin{block}{}
+		Sei $W$ die Menge der möglichen Wetterformen und $S$ die Menge aller 				Studenten.\\
+		$\heartsuit \subseteq$ $S \times W$ beschreibt "`Student liebt das 					Wetter"'
+		\pause
+		\begin{itemize}
+			\item $\neg\exists s \in S$ : $\forall w \in W$ : $s \heartsuit w$\\
+			\pause
+			Es existiert kein Student, der alle Wetterformen liebt.
+			\pause
+			\item $\exists w \in W$ : $\forall s \in S$ : $s \heartsuit w$\\
+			\pause
+			Es existiert eine Wetterform, die jeder Student liebt.
+			\pause
+			\item $\forall s \in S$ : $\exists w \in W$ : $s \heartsuit w$\\
+			\pause
+			Für alle Studenten existiert eine Wetterform, die er liebt.
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\section{W\"orter}
+\begin{frame}
+	\frametitle{Wörter}
+	\begin{block}{Vorbemerkung}
+		\begin{itemize}
+			\item $\mathbb G_n$ = \pause \{ i $ \in $ $\mathbb N_0$ $ | $ 0 $ \le $ i $ \land $ i $ < $ n \}
+			\item $\mathbb G_0$ = \pause \{\}
+		\end{itemize}
+	\end{block}
+	\begin{block}{In Worten}
+		Wörter sind eine Surjektive Abbildung mit w: $\mathbb G_n$ $\rightarrow$ B $\subset$ A \\
+		\begin{example}
+			Das Wort w = hallo ist eine Abbildung \\
+			w: $\mathbb G_5$ $\rightarrow$ \{ a,h,l,o \} mit \\
+			w(0) = h w(1) = a w(2) = l w(3) = l w(4) = o
+		\end{example}
+	\end{block}
+\end{frame}
+
+\subsection{Das leere Wort}
+\begin{frame}
+	\frametitle{Das leere Wort}
+	\begin{block}{Das Wort}
+		\begin{itemize}
+			\item Das leere Wort wird mit dem $\epsilon$ dargestellt, und ist eine \\
+			Abbildung von \{\} $\rightarrow$ \{\} \\
+			\item \{\} x \{\} = \{\} \\
+			\item $\epsilon$ hat die Länge 0 ist aber dennoch ein Element. \\
+			\item wenn M = \{$\epsilon$\} dann ist M $\not=$ $\emptyset$ \\
+			\item $|$M$|$ = 1
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\subsection{Konkatenation}
+\begin{frame}
+	\frametitle{Konkatenation von Wörtern}
+	\begin{block}{Konkatenation von Wörtern}
+		\begin{itemize}
+			\item eine Konkatenation ist eine Verknüpfung mehrerer Zeichen(ketten) 			und wird als $\cdot$ dargestellt \\
+			\item z.B. kann man hallo als h $\cdot$ a $\cdot$ l $\cdot$ l $\cdot$ 				o dargestellt werden.\\
+			\item der Punkt ist allerding nicht notwendig, er kann wie das 						Malzeichen bei der Multiplikation weggelassen werden. \\
+			\item mehrere Wörter können auch zu einem weiteren konkateniert 					werden.
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\section{Vollst\"andige Induktion}
+\subsection[Einf\"uhrung]{Einf\"uhrung}
+\begin{frame}
+	\frametitle{Vollständige Induktion}
+	\begin{block}{Was ist die vollst\"andige Induktion?}
+		Eine oft benutzte sehr m\"achtige Beweistechnik
+	\end{block}
+	\begin{block}{Vorgehen?}
+		\begin{enumerate}
+			\item Die Behauptung f\"ur einen ersten Wert beweisen
+			\item Annehmen dass die Behauptung f\"ur ``irgendeinen'' Wert gilt
+			\item Behauptung ausgehend von dem bliebigen Wert f\"ur den n\"achsten 			Wert beweisen
+		\end{enumerate}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{So sollte es aussehen}
+	\begin{block}{Induktionsanfang}
+		\begin{itemize}
+			\item Beweis der Behauptung für einen (manchmal auch mehrere) 						''Startwerte''
+		\end{itemize}
+	\end{block}
+	\pause
+	\begin{block}{Induktionsannahme}
+		\begin{itemize}
+			\item F\"ur ein beliebiges aber festes x/k/n gelte: \ldots
+			\item Wird im Induktionsschritt benutzt
+		\end{itemize}
+	\end{block}
+	\pause
+	\begin{block}{Induktionsschritt}
+		\begin{itemize}
+			\item Ausgehend von x die Behauptung f\"ur $x + 1$ beweisen
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ein erstes Beispiel}
+	\begin{block}{Die Gaußsche Summenformel}
+		\begin{center}
+			$\sum\limits_{k=1}^{n}k = 1 + 2 + 3 + 4 + \ldots + n =
+			\frac{n(n+1)}{2}$
+		\end{center}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Beweis!}
+	\begin{block}{Induktionsanfang}
+		\begin{center}
+			$n = 1:$ \hspace{10mm} $\sum\limits_{k=1}^{n}k$ = $\sum\limits_{k=1}				^{1}k$ = 1
+			= $\frac{1(1+1)}{2}$ = $\frac{n(n+1)}{2}$ \hspace{15mm} \uncover<2->{$				\Box$}
+		\end{center}
+	\end{block}
+	\uncover<3-> 
+	{
+		\begin{block}{Induktionsvorraussetzung}
+			\begin{center}
+				F\"ur ein beliebiges aber festes n gelte: \\
+				$\sum\limits_{k=1}^{n}k = \frac{n(n+1)}{2}$
+			\end{center}
+		\end{block} 
+	}
+	\uncover<4-> 
+	{
+		\begin{block}{Induktionsschluss}
+			\begin{center}	
+				$n = 1:$ \hspace{10mm}
+				$\sum\limits_{k=1}^{n+1}k = (n+1)+ \sum\limits_{k=1}^{n}k 								\stackrel{\mathrm{I.V.}}=
+				(n+1)+\frac{n(n+1)}{2} $ \\
+				$= \frac{(n+1)(n+2)}{2} $ \uncover<5->{$\Box$}
+			\end{center}
+		\end{block} 
+	}
+\end{frame}
+
+\subsection[Aufgaben]{Aufgaben}
+\begin{frame}
+	\frametitle{Jetzt seid ihr dran}
+	\begin{block}{Eine Reihe}
+		\begin{itemize}
+			\item $a_{0} = 0$
+			\item $a_{n+1} = a_{n} + 2n + 1$
+		\end{itemize}
+	\end{block}
+	\vspace{5mm}
+	\uncover<2->
+	{
+		\begin{block}{Zeige}
+			$a_n = n^2$
+		\end{block}
+	}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Weiter gehts}
+	\begin{block}{Noch ne Reihe}
+		\begin{itemize}
+			\item $a_{0} = 3$
+			\item $a_{n+1} = a_{n} + 3$
+		\end{itemize}
+	\end{block}
+	\vspace{5mm}
+	\uncover<2->
+	{
+		\begin{block}{Zeige}
+			\begin{itemize}
+				\item Ideen?
+				\visible<3->
+				{
+					\item $a_{n} = 3(n+1)$
+				}
+			\end{itemize}
+		\end{block}
+	}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Und jetzt mal was schweres}
+	\begin{block}{Aufgabe }
+		\begin{itemize}
+			\item $x_0$ = 0 \\
+			\item $\forall n \, \in \mathbb N_0 : x_{n+1} = x_n + (n+1)(n+2)$
+			\item Tipp: $x_1, x_2, x_3, x_4$ ausrechnen
+			\visible<2->
+			{
+				\item Wenn keine Idee: $ \frac{x(x+1)(x+2)}{3}$
+			}
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Unnützes Wissen}
+	\begin{center}
+		Anatidaephobia ist die Angst von einer Ente beobachtet zu werden.
+	\end{center}
+\end{frame}
+
+\end{document}
