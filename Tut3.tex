@@ -1,0 +1,160 @@
+\documentclass{beamer}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usetheme{Warsaw}
+\usecolortheme{default}
+
+\author{Richard Feistenauer}
+\title{GBI-Tutorium 3}
+\date{14.November.2014}
+
+\begin{document}
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}
+	\frametitle {Inhaltsverzeichnis}
+	\tableofcontents
+\end{frame}
+
+\section{Wiederholung}
+\subsection{Übungsblatt}
+\begin{frame}
+	\frametitle{Letztes \"Ubungsblatt}
+	\begin{block}{Probleme}
+		\begin{itemize}
+			\item Formale Definitionen
+			\item Vollständige Induktion
+			\item induktiv $\approx$ rekursiv
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\subsection{Huffmancode}
+\begin{frame}
+	\frametitle{Huffman \"Ubung}
+	\begin{block}{}
+		was ist die kürzeste Codierung für das Wort $"$MISSISSIPPI$"$ \\
+		$-$ ohne Blockcode\\
+		$-$ mit Blockcode	
+	\end{block}
+\end{frame}
+
+\section{Speicher}
+\subsection{Bit und Byte}
+\begin{frame}
+	\frametitle{Bit und Byte}
+	\begin{block}{Definition}
+		Ein Bit ist ein Zeichen des Alphabetes \{0,1\}\\
+		Ein Byte sind üblicherweise 8 Bit. \{vor allem früher war das 		nicht immer so\} \\
+		Deshalb gibt es die Bezeichnung Octet das ist ein Byte mit 8 			Bit
+	\end{block}
+\end{frame}
+
+\subsection{Größenpr\"afixe}
+\begin{frame}
+	\frametitle{Größenpr\"afixe Dezimal}
+	\begin{center}
+  		\begin{tabular}{*{6}{c}}
+  			\hline
+   			$10^{-3}$ & $10^{-6}$ & $10^{-9}$ & $10^{-12}$ & 						$10^{-15}$ & $10^{-18}$ \\
+    		$1000^{-1}$ & $1000^{-2}$ & $1000^{-3}$ & $1000^{-4}$ 					& $1000^{-5}$ & $1000^{-6}$ \\
+    		milli & mikro & nano & pico & femto & atto \\
+    		m & $\mu$ & n & p & f & a \\
+    		\hline
+    		$10^3$ & $10^6$ & $10^9$ & $10^{12}$ & $10^{15}$ & 						$10^{18}$ \\
+    		$1000^1$ & $1000^2$ & $1000^3$ & $1000^4$ & $1000^5$ 					& $1000^6$ \\
+    		kilo & mega & giga & tera & peta & exa \\
+   			k & M & G & T & P & E \\
+   			\hline
+  		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Größenpr\"afixe Bin\"ar}
+	\begin{center}
+  		\begin{tabular}{*{6}{c}}
+   			\hline
+    		$2^{10}$ & $2^{20}$ & $2^{30}$ & $2^{40}$ & $2^{50}$ & 					$2^{60}$ \\
+    		$1024^1$ & $1024^2$ & $1024^3$ & $1024^4$ & $1024^5$ & 					$1024^6$ \\
+    		kibi & mebi & gibi & tebi & pebi & exbi \\
+    		Ki	& Mi & Gi & Ti & Pi & Ei\\
+    		\hline
+  		\end{tabular}
+	\end{center}
+	Eine Terrabyte Festplatte hat für gewöhnlich nur 1000000000000 			Bytes also ca. 930 Gigabytes
+\end{frame}
+
+\subsection{Speicher}
+\begin{frame}
+	\frametitle{Speicher als Tabelle}
+	\begin{center}
+		\begin{tabular}{{c}{c}}
+  		\begin{tabular}{{c}|{c}}
+  			\hline
+   			Adresse 1 & Wert 1\\
+    		Adresse 2 & Wert 2\\
+    		Adresse 3 & Wert 3\\
+   			... & ... \\
+   			Adresse n & Wert n\\
+   			\hline
+  		\end{tabular}
+  		&
+  		\begin{tabular}{{c}|{c}}
+  			\hline
+   			000 & 01001011\\
+    		001 & 10010101\\
+    		010 & 00111001\\
+   			... & ... \\
+   			111 & 11100101\\
+   			\hline
+  		\end{tabular}			
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Speicher als Abbildung}
+	\begin{block} {Abbildung}
+		m: Adr $\rightarrow$ Val\\
+		m(a) = v\\
+		~\\
+		memread : Mem x Adr $\rightarrow$ Val\\
+		memread : $Val^{Adr}$ x Adr $\rightarrow$ Val\\
+		memread(m, a) $\mapsto$ m(a)\\
+		~\\
+		memwrite : Mem x Adr x Val $\rightarrow$ Mem\\
+		memwrite : $Val^{Adr}$ x Adr x Val $\rightarrow Val^{Adr}$\\
+		memwrite(m, a, v) $\mapsto$ m'
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{\"Ubung}
+	\begin{block} {}
+		\begin{itemize}[<+->]
+			\item memread(memwrite(m,a,v),a) = \visible<2-> {v}
+			\item memread(memwrite(m,a',v'),a) = \visible<3-> {memread(m,a)}
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		Fragen?
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Unnützes Wissen}
+	\begin{center}
+		Als Bibliotaphen  bezeichnet man Menschen, die ihre Bücher in 		Verstecken aufbewahren und nicht verleihen.
+	\end{center}
+\end{frame}
+\end{document}
