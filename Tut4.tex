@@ -1,0 +1,195 @@
+\documentclass{beamer}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usetheme{Warsaw}
+\usecolortheme{default}
+
+\author{Richard Feistenauer}
+\title{4.GBI-Tutorium von Tutorium Nr. 31}
+\date{21.November.2014}
+
+\begin{document}
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}
+	\frametitle {Inhaltsverzeichnis}
+	\tableofcontents
+\end{frame}
+
+\section{Wiederholung}
+\subsection{Übungsblatt NR 2}
+\begin{frame}
+	\frametitle{Vorletztes \"Ubungsblatt}
+	\begin{block}{Probleme}
+		\begin{itemize}
+			\item Formale Definitionen
+			\item Vollständige Induktion
+			\item induktiv $\approx$ rekursiv
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\subsection{Übungsblatt NR 3}
+\begin{frame}
+	\frametitle{Letztes \"Ubungsblatt}
+	\begin{block}{Probleme}
+		\begin{itemize}
+			\item 11101 = -3
+			\item $-2^x$
+			\item Definition von Surjektivität ist kein Beweis
+			\item schreibt nicht so Wörter wie Natürlich oder 						Selbstverständlich in Beweise
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\section{Prozessor}
+\subsection{Aufbau}
+\begin{frame}
+	\frametitle{Aufbau}
+	\begin{block}{}
+		Was brauchen wir in einem Prozessor
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufbau}
+	\begin{block}{}
+		\begin{itemize}
+			\item Register: Speicher für je ein Wort
+			\item Rechenwerk (ALU): berechnet Arithmetische und Logische Funktionen 
+			\item Steuerwerk: (Befehlsregister, Befehlszähler, Statusregister (Flags wie Übertrag, Minus..))
+			\item Speicherwerk: organisiert Speicherzugriff
+			\item Daten- und Adressbus: Transfer zwischen Bausteinen
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\section{Befehle}
+\subsection{Befehlaufbau}
+\begin{frame}
+	\frametitle{Befehlaufbau}
+	\begin{block}{Definition}
+		Übermittlung einer Bitfolge als Befehl and den Prozessor\\
+		0010 0000 0000 0000 0010 1010 \\
+		= STV 10101\\
+		= STV 42
+	\end{block}
+\end{frame}
+
+\subsection{Befehle}
+\begin{frame}
+	\frametitle{ein paar Befehle}
+	\begin{block}{Definition}
+		\begin{itemize}
+			\item LDC const: Lädt Konstante in Akku.
+			\item LDV adr: Lädt Wert der Adresse in Akku.
+			\item STV adr: Speichert Wert in Adresse .
+			\item LDIV adr: Lädt Wert von der Adresse welche in der 				Adresse die mitgeliefert wurde gespeichert ist.
+			\item ADD adr: Addiert den Wert an der Adresse mit dem 					Wert im Akku und speichert das Ergebnis im Akku
+			\item EQL adr: wenn Akku und Wert an der Adresse übereinstimmen wird -1 in dem Akku geladen, sonst 0
+			\item AND, OR, XOR 
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\subsection{Programmablauf}
+\begin{frame}
+	\frametitle{normaler Programmablauf}
+	\begin{block}{Definition}
+		Steuerregister hält Liste von Befehlen und speichert derzeitige Position. \\
+		\begin{itemize}
+			\item 001 LDV 41
+			\item 010 ADD 15
+			\item 011 STV 12
+			\item 100 LDC 10
+			\item ...
+		\end{itemize}
+		Der normale Ablauf ist eine Schrittweise abarbeitung der Befehle. Gibt es Situationen in denen wir mehr brauchen?
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Spr\"unge}
+	\begin{block}{Definition}
+		Für if/else, Schleifen, ... gibt es Sprungbefehle \\
+		\begin{itemize}
+			\item JMP adr: springt zu gegebener Adresse
+			\item JMN adr: springt wenn Wert in Akku negative ist.
+		\end{itemize}
+		Wie baut man eine if/else Abfrage?
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Durchf\"uhrung in drei Phasen}
+	\begin{block}{die drei Phasen}
+		\begin{itemize}
+			\item Holphase
+			\item Decodierphase
+			\item Ausführungsphase
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\section{Beispiele}
+\subsection{Multiplizieren}
+\begin{frame}
+	\frametitle{3 mal 4}
+	\begin{block}{Variablen Definitionen}
+		var1: 3\\
+		var2: 4\\
+		i:\\
+		result:
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Code}
+		\begin{tabular}{ll}
+		 LDC 0 & Lädt die Konstante 0\\
+		 STV result	& 0 $->$ Ergebnisvariable\\
+		 STV i & 0 $->$ Schleifenvariable\\
+		 start: LDV result & Lädt das Ergebnis\\
+		 Add var2 & Addiert 4\\
+		 STV result & Speichert erhöhtes Ergebnis\\
+		 LDC 1 & Lädt Konstante 1\\
+		 ADD i & increment Schleifenbariable\\
+		 STV i & speichert das incrementierte i\\
+		 EQL var1 & kontrolliert ob genug oft addiert wurde\\
+		 JMN done & springe zum Ende wenn fertig\\
+		 JMP start & springe zurück zum Anfang\\
+		 done: HALT & beendet das Programm
+		 \end{tabular}
+	\end{block}
+\end{frame}
+
+\subsection{weitere Beispiele}
+\begin{frame}
+	\frametitle{Beispiele}
+	\begin{block}{}
+		\begin{itemize}
+			\item if abfrage mit a = b = c\\
+			\item geschachtelte for schleife
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		Fragen?
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Unnützes Wissen}
+	\begin{center}
+		Als Bibliotaphen  bezeichnet man Menschen, die ihre Bücher in 		Verstecken aufbewahren und nicht verleihen.
+	\end{center}
+\end{frame}
+\end{document}
