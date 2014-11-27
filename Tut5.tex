@@ -1,0 +1,190 @@
+\documentclass{beamer}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\newcommand{\tief}[1]{\ensuremath{\mathrm{#1}}}
+\usetheme{Warsaw}
+\usecolortheme{default}
+\author{Richard Feistenauer}
+\title{5.GBI-Tutorium von Tutorium Nr. 31}
+\date{18.November 2014}
+
+\begin{document}
+\begin {frame}
+	\titlepage
+\end {frame}
+
+\begin {frame}
+	\frametitle {Inhaltsverzeichnis}
+	\tableofcontents
+\end {frame}
+
+\section{Wiederholung}
+\begin{frame}
+	\frametitle{Wiederholung}
+	\begin{block}{Übungsblatt}
+		\begin{itemize}
+			\item Algorithmus für Huffmancode
+			\item Sonstiges
+			\begin{itemize}
+				\item https://github.com/Richard-GBI
+			\end{itemize}
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\section{Algorithmen}
+\subsection{Definition}
+\begin{frame}
+	\frametitle{Definition}
+	\begin{block}{Informell}
+		Eine von einer Maschine abarbeitbare Anleitung, ein
+		bestimmtes Problem zulösen
+	\end{block}
+	\begin{block}{Eigenschaften}
+		\pause
+		\begin{itemize}
+			\item endliche Beschreibung
+			\item elementare Anweisungen
+			\item Determinismus
+			\item zu \emph{endlicher} Eingabe wird \emph{endliche} 					Ausgabe erzeugt
+			\item endliche viele Schritte
+			\item funktioniert für beliebig große Eingaben
+			\item Nachvollziehbarkeit/Verständlichkeit für jeden (der 			mit der Materie vertraut ist)
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\subsection{Pseudocode}
+\begin{frame}
+	\begin{block}{Pseudocode}
+		\begin{tabular}[c]{ll}
+			Zuweisung & x $\leftarrow$ a \\
+			&\\
+			for-Schleife & Schleifenvariable $\leftarrow$ Startwert 				to Endwert \\
+			& do \\
+			& \begin{quote} Schleifenrumpf \end{quote}\\
+			& od \\
+		\end{tabular}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Übung}
+	\begin{block}{Beispiel: Übungsblatt 3/08}
+		Schreiben Sie einen Algorithmus auf, der folgendes leistet
+		\begin{itemize}
+			\item Als Eingaben erhält er ein Wort w:$G_n \rightarrow$ 			A und zwei Symbole x $\in$ A und y $\in$ A
+			\item Am Ende soll eine Variable r den Wert 0 oder 1 					haben, und zwar soll gelten:\\	
+			$r = \begin{cases} 1 &\mbox{falls irgendwo in w direkt 						hintereinander} \\
+			& \mbox{erst x und dann y vorkommen}\\
+			0 & \mbox{sonst}. \end{cases}$
+		\end{itemize}
+		Benutzen Sie zum Zugriff auf das i-te Symbol von w die 					Schreibweise w(i). Formulieren Sie den Algorithmus mit Hilfe 			einer for-Schleife.
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Übung}
+	\begin{block}{Lösung}
+		\begin{tabbing}
+			$p \leftarrow 0$\\
+			\textbf{for} \= $i \leftarrow0$ 			\textbf{to} $n-2$ \textbf{do}\\
+			\>$p \leftarrow$
+			$\begin{cases}$
+			1 $&$ falls $w(i)=x \land w(i+1) = y\\ $
+			p $&$ sonst
+			$\end{cases}$\\
+			\textbf{od}
+		\end{tabbing}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Nochmal eins}
+	\begin{block}{Beispiel: GGT}
+		Ein Pseudocode für den größten gemeinsamen Teiler.
+	\end{block}
+\end{frame}
+
+\subsection{Schleifeninvariante}
+\begin{frame}
+	\frametitle{Schleifeninvariante}
+	\begin{block}{Schleifeninvariante}
+		\begin{itemize}
+			\item arithmetische Aussage
+			\item betrifft alle interessanten Parameter der Schleife
+			\item gilt immer
+			\begin{itemize}
+				\item vor dem ersten Schleifendurchlauf
+				\item nach jedem einzelnen Schleifendurchlauf
+				\item nach Ende der Schleife
+			\end{itemize}
+		\end{itemize}
+	\end{block}
+	\begin{block}{Beweis}
+		Der Beweis einer Schleifeninvariante \\
+		ist häufig durch Vollständige Induktion möglich.
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Schleifeninvariante}
+	\begin{block}{Aufgabe}
+		S$_0$ $\leftarrow$ a \\
+		Y$_0$ $\leftarrow$ b \\
+		for i$\leftarrow$0 to b-1 \\
+		do \\
+		\begin{quote}
+			S$_{i+1}$ $\leftarrow$ S$_i$ + 1 \\
+			Y$_{i+1}$ $\leftarrow$ Y$_i$ - 1
+		\end{quote}
+		od \\
+		Was tut dieser Algorithmus ?
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Schleifeninvariante}
+	\begin{block}{Aufgabe}
+		Wir wählen a = 6 und b = 4 \bigskip \\
+		\begin{tabular}[c]{| c | c | c |}
+			\hline
+			& S$_i$ & Y$_i$ \\
+			\hline
+			\hline
+			i = 0 & & \\
+			\hline
+			i = 1 & & \\
+			\hline
+			i = 2 & & \\
+			\hline
+			i = 3 & & \\
+			\hline
+			i = 4 & & \\
+			\hline
+		\end{tabular}
+		\bigskip \\
+		Was wäre eine Mögliche Schleifeninvariante?\\
+		\pause
+		$\forall i \in \tief{\mathbb{N}_0}: i \leq b \Rightarrow S_i 			+ Y_i = a + b$
+	\end{block}
+\end{frame}
+
+\section{Fragen}
+\begin{frame}
+	\begin{center}
+		Noch Fragen?
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Unnützes Wissen}
+	\begin{center}
+		In Nordsibirien ist es Brauch, dass verliebte Frauen ihren 				Angebeteten mit Feldschnecken bewerfen.
+	\end{center}
+\end{frame}
+\end {document}
