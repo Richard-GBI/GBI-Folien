@@ -153,16 +153,16 @@
 	\begin{block}{Code}
 		\begin{tabular}{ll}
 		 LDC 0 & Lädt die Konstante 0\\
-		 STV result	& 0 $->$ Ergebnisvariable\\
+		 STV result	& 0 $->$ Ergebnisvariable\\		 
 		 STV i & 0 $->$ Schleifenvariable\\
-		 start: LDV result & Lädt das Ergebnis\\
+		 start: EQL var1 & kontrolliert ob genug oft addiert wurde\\
+		 JMN done & springe zum Ende wenn fertig\\
+		 LDV result & Lädt das Ergebnis\\
 		 Add var2 & Addiert 4\\
 		 STV result & Speichert erhöhtes Ergebnis\\
 		 LDC 1 & Lädt Konstante 1\\
 		 ADD i & increment Schleifenbariable\\
 		 STV i & speichert das incrementierte i\\
-		 EQL var1 & kontrolliert ob genug oft addiert wurde\\
-		 JMN done & springe zum Ende wenn fertig\\
 		 JMP start & springe zurück zum Anfang\\
 		 done: HALT & beendet das Programm
 		 \end{tabular}
@@ -189,7 +189,7 @@
 \begin{frame}
 	\frametitle{Unnützes Wissen}
 	\begin{center}
-		Als Bibliotaphen  bezeichnet man Menschen, die ihre Bücher in 		Verstecken aufbewahren und nicht verleihen.
+		Eine Analyse von knapp 1200 Briefen an den Weihnachtsmann belegt, dass die Kinder im Laufe der vergangenen Jahre immer unhöflicher wurden. Vereinzelt erhält der Weihnachtsmann sogar Todesdrohungen.
 	\end{center}
 \end{frame}
 \end{document}
