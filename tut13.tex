@@ -1,0 +1,186 @@
+\documentclass{beamer}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amssymb} 
+\usepackage{amsmath}
+
+\usepackage{hyperref}
+
+\usetheme{Warsaw}
+\usecolortheme{default}
+
+
+\author{Richard Feistenauer}
+\title{13. GBI-Tutorium von Tutorium Nr.31}
+\date{6.Februar 2015}
+
+\begin{document}
+
+\begin {frame}
+	\titlepage
+\end {frame}
+
+\begin {frame}
+	\frametitle {Inhaltsverzeichnis}
+	\tableofcontents
+\end {frame}
+
+\section{Äquivalenzrelationen}
+\begin{frame}
+	\frametitle{Eigenschaften}
+	\begin{block}{}
+		\begin{itemize}
+			\pause
+			\item Reflexivität ($\forall x : xRx$)
+			\item Symmetrie ($\forall x,y : xRy \Rightarrow yRx$)
+			\item Transitivität ($\forall x,y,z : xRy \land yRz \Rightarrow xRz$)
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\subsection{Kongruenz}
+\begin{frame}
+	\frametitle{Beispiel:Kongruenz modulo n}
+	\begin{block}{}
+		$xRy \Leftrightarrow (x - y)$ mod $n = 0$\\
+		\pause
+		\bigskip
+		x und y sind genau dann äquivalent, wenn beide bei Division durch n den gleichen Rest liefern.\\
+		\bigskip
+		\begin{block} {Zeige, dass R Äquivalenzrelation ist.}
+		\pause
+		Reflexivität: x - x = 0\\
+		Symmetrie: wenn x - y vielfaches von n dann auch y - x = -(x - y)\\
+		Transitivität: x - y = $k_1$ * n und y - z = $k_2$ * n dann\\
+		x - z = (x - y) - (y - z) = ($k_1 + k_2$) * n
+		\end{block}
+	\end{block}
+\end{frame}
+
+\subsection{Äquivalenzklassen}
+\begin{frame}
+	\frametitle{Äquivalentsklassen}
+	\begin{itemize}
+		\item Die Äquivalenzklasse von x $\in$ M ist $\{ y \in M : xRy \}$
+		\item Schreibweise $[x]_R$ oder idR einfach $[x]$
+		\item Die sog. Faktormenge von M nach R ist die Menge aller Äquivalenzklassen.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Beispiel: Kongruenz modulo 3}
+	\begin{itemize}
+		\item Wie viele Äquivalenzklassen gibt es?
+		\item Was sind diese Äquivalenzklassen, bzw wie schreibt man sie am besten auf?
+	\end{itemize}
+\end{frame}
+
+\section{Halbordnung}
+\subsection{Einführung}
+\begin{frame}
+	\frametitle{Antisymmetrie}
+	\begin{itemize}
+		\item R heißt antisymmetrisch, wenn für alle $x,y \in M$ gilt:\\
+		$\> xRy \land yRx \Rightarrow x = y$
+		\pause
+		\item In Worten: R ist nur bei Gleichheit symmetrisch.
+		\item Beispiel: Teilmengen-Relation:
+		\item $A \subset B \land B \subset A \Rightarrow A = B$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Definition}
+	\begin{itemize}
+		\item R heißt Halbordnung, wenn sie:\\
+			\begin{itemize}
+				\item reflexiv
+				\item antisymmetrisch und
+				\item transitiv ist.
+			\end{itemize}
+		\item Wenn R Halbordnung auf Menge M ist, nennt man M auch eine halbgeordnete Menge.	
+		\item Darstellung häufig Hassediagramm (siehe Tafel).
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Beispiel}
+	 Betrachte man die Realtion $\subset$ auf der Potenzmenge $2^M$ 
+\end{frame}
+
+\subsection{Besondere Elemente}
+\begin{frame}
+	\frametitle{Besondere Elemente}
+	Sei $(M,\sqsubseteq)$ halbgeordnet und $T \subset M$.
+	\begin{itemize}
+		\item $x \in T$ heißt \textit{minimales Element von T}, wenn es kein $y \in T$ gibt, mit $y \sqsubseteq x$ und $y \neq x$
+		\item $x \in T$ heißt \textit{kleinstes Element von T}, wenn für alle $y \in T$ gilt: $x \sqsubseteq y$
+		\item $x \in T$ heißt \textit{maximales Element von T}, wenn es kein $y \in T$ gibt, mit $x \sqsubseteq y$ und $x \neq y$
+		\item $x \in T$ heißt \textit{größtes Element von T}, wenn für alle $y \in T$ gilt: $y \sqsubseteq x$
+		\pause
+		\item Was sind die Unterschiede?
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Obere und Untere Schranke}
+	Sei $(M,\sqsubseteq)$ halbgeordnet und $T \subset M$.
+	\begin{itemize}
+		\item $x \in M$ heißt \textit{obere Schranke von T}, wenn für alle $y \in T$ gilt: $y \sqsubseteq x$.
+		\item $x \in M$ heißt \textit{untere Schranke von T}, wenn für alle $y \in T$ gilt: $x \sqsubseteq y$.
+		\pause
+		\item Beachte: untere und obere Schranken von T dürfen außerhalb von T liegen.
+		\item Schranken müssen nicht existieren.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Supremum / Infimum}
+	\begin{itemize}
+		\item Besitzt die Menge aller oberen Schranken einer Teilmenge T ein kleinstes Element, so heißt dies das Supremum von T (Schreibweise $\bigsqcup T$ oder sup(T)).
+		\item Besitzt die Menge aller unteren Schranken einer Teilmenge T ein größtes Element, so heißt dies das Infimum von T.
+		\item Müssen natürlich auch nicht existieren.
+	\end{itemize}
+\end{frame}
+
+\subsection{Totale Ordnungen}
+\begin{frame}
+	\frametitle{Definition}
+	\begin{itemize}
+		\item R ist \textit{Ordnung} oder genauer \textit{totale Ordnung}, wenn gilt:
+		\begin{itemize}
+			\item R ist Halbordnung
+			\item $\forall x,y \in M : xRy \lor yRx$		
+		\end{itemize}
+		\pause
+		\item Es gibt keine unvergleichbaren Elemente.
+		\item Beispiele?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Zusatz}
+	\begin{itemize}
+		\item Es gibt noch einige andere Sachen zu Halbordnungen (vollständig, monotone und stetige Abbildungen, Fixpunktsatz).
+		\item Wären noch mehr Definitionen gewesen, und ist normalerweise nicht Klausurrelevant.
+		\item Schaut aber am besten zumindest mal über die Folien dazu drüber.
+	\end{itemize}
+\end{frame}
+
+\begin {frame}
+\frametitle {Ende}
+	\begin {center}
+		Noch Fragen?
+	\end {center}
+\end {frame}
+
+\begin {frame}
+\frametitle {Unnützes Wissen}
+	\begin {center}
+		Jedes mal wenn Beethoven komponierte, schüttete er sich etwas Eiswasser über den Kopf.
+	\end {center}
+\end {frame}
+
+\end {document}
